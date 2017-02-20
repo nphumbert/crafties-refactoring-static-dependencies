@@ -15,7 +15,7 @@ public class PetServiceImplTest {
         // given
         PetRepository petRepository = Mockito.mock(PetRepository.class);
         when(petRepository.findByName("Berlioz")).thenReturn(Optional.empty());
-        PetService petService = new TestablePetServiceImpl(petRepository);
+        PetService petService = new PetServiceImpl(petRepository);
 
         // when
         Pet berlioz = petService.create("Berlioz", PetType.CAT);
@@ -29,16 +29,10 @@ public class PetServiceImplTest {
         // given
         PetRepository petRepository = Mockito.mock(PetRepository.class);
         when(petRepository.findByName("Berlioz")).thenReturn(Optional.of(new Pet("Berlioz", PetType.CAT)));
-        PetService petService = new TestablePetServiceImpl(petRepository);
+        PetService petService = new PetServiceImpl(petRepository);
 
         // when
         petService.create("Berlioz", PetType.CAT);
     }
 
-    private class TestablePetServiceImpl extends PetServiceImpl {
-
-        private TestablePetServiceImpl(PetRepository petRepository) {
-            super(petRepository);
-        }
-    }
 }
