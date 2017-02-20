@@ -37,15 +37,8 @@ public class PetServiceImplTest {
 
     private class TestablePetServiceImpl extends PetServiceImpl {
 
-        private final PetRepository petRepository;
-
         private TestablePetServiceImpl(PetRepository petRepository) {
-            this.petRepository = petRepository;
-        }
-
-        @Override
-        protected PetRepository getPetRepository() {
-            return petRepository;
+            super(petRepository);
         }
     }
 }
